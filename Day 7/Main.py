@@ -1,16 +1,16 @@
 import random
 from HangmanWords import word_list
-from HangmanArt import stages,logo
+from HangmanArt import stages, logo
 
 # Hangman the game!
 
-#Print the logo, pick a word, print the word, and give a hint to the user.
+# Print the logo, pick a word, print the word, and give a hint to the user.
 print(logo)
 print(stages[-1])
 chosen_word = random.choice(word_list)
 dashes = "-" * len(chosen_word)
 print(f"Your word to guess is: {len(chosen_word)} letters long.\n   {dashes} ")
-
+    
 correct_letters = []
 lives = 6
 game_over = False
