@@ -1,23 +1,33 @@
 import random
+from HangmanWords import word_list
+from HangmanArt import stages,logo
 
 # Hangman the game!
+print(logo)
 
-word_list = ["aardvark", "baboon", "camel"]
-
-#TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 chosen_word = random.choice(word_list)
-print(chosen_word)
+dashes = "-" * len(chosen_word)
+print(f"Your word to guess is: {len(chosen_word)} letters long.\n   {dashes} ")
 
-#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
-guess = input("Choose a letter from the alphabet! ").lower()
 
-#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+
+guessed_word_list = []
+index_number = 0
 for letter in chosen_word:
+    guessed_word_list += "-"
     if letter == guess:
-        print("Right")
+        guessed_word_list[index_number] = guess
+    elif letter == guessed_word_list[index_number]:
+        print("You already guessed that letter.")
     else:
-        print("Wrong")
-        
+        print("That guess was wrong!")
+    index_number += 1
+
+guessed_word = ""
+for value in guessed_word_list:
+    guessed_word += value
+print(guessed_word)
+
 #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
 
     #Check guessed letter
