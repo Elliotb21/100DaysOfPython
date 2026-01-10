@@ -3,41 +3,45 @@ from HangmanWords import word_list
 from HangmanArt import stages,logo
 
 # Hangman the game!
-print(logo)
 
+#Print the logo, pick a word, print the word, and give a hint to the user.
+print(logo)
+print(stages[-1])
 chosen_word = random.choice(word_list)
 dashes = "-" * len(chosen_word)
 print(f"Your word to guess is: {len(chosen_word)} letters long.\n   {dashes} ")
 
-
-
-guessed_word_list = []
-index_number = 0
-for letter in chosen_word:
-    guessed_word_list += "-"
-    if letter == guess:
-        guessed_word_list[index_number] = guess
-    elif letter == guessed_word_list[index_number]:
-        print("You already guessed that letter.")
-    else:
-        print("That guess was wrong!")
-    index_number += 1
-
-guessed_word = ""
-for value in guessed_word_list:
-    guessed_word += value
-print(guessed_word)
-
-#TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-
-    #Check guessed letter
+correct_letters = []
+lives = 6
+game_over = False
+while not game_over:
+    displayed_word = ""
+    guess = input("\nGuess a letter: ")
     
-    #Check if user is wrong.
-    
-#TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
+    if guess in correct_letters:
+        print(f"You've already guessed the letter: {guess}")
+    if guess not in chosen_word:
+        print(f"The letter {guess} is not in the answer...")
+        lives -= 1
+        
+    for letter in chosen_word:
+        if letter == guess:
+            displayed_word += guess
+            correct_letters.append(letter)         
+        elif letter in correct_letters:
+            displayed_word += letter  
+        else:
+            displayed_word += "_"
+    print(displayed_word)
 
-    #Join all the elements in the list and turn it into a String.
-
-    #Check if user has got all letters.
-
-#TODO-6: - Import the stages from hangman_art.py and make this error go away.
+    if lives >= 1:
+        print(stages[lives])
+        print(f"You have {lives} live(s) left!")
+    else:    
+        print("You lose!")
+        print(f"The word was: {chosen_word}")
+        print(stages[lives])
+        game_over = True
+    if "_" not in displayed_word:
+        game_over = True
+        print("You won!")
