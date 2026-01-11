@@ -40,4 +40,4 @@ def calculate_love_score(name1, name2):
     # love_count = sum(combined_names.count(letter) for letter in "love")
     print(true_count, love_count, sep="")
 
-calculate_love_score("Kanye West","Kim Kardashian")
+calculate_love_score("Ingrid Bond","Elliot Bond")

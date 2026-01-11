@@ -6,14 +6,14 @@ direction = input("Type 'encode' to encrypt, and 'decode' to decrypt.\n").lower(
 text = input("Type your message. \n").lower()
 shift = int(input("Type the shift number: \n"))
 
-def encrypt(original_text, shift_amount):
-    shifted_index = 0
-    text_accumulator = ""
+def encrypt(original_text, shift_amount): 
+    cipher_text = ""
     for letter in original_text:
-        shifted_index = alphabet.index(letter) + shift
-        text_accumulator += alphabet[shifted_index]
-    print(text_accumulator)
-                
-encrypt(text, 5)
+        shifted_index = alphabet.index(letter) + shift_amount
+        shifted_index %= len(alphabet)
+        cipher_text += alphabet[shifted_index]
+    print(cipher_text)
+                  
+encrypt(text, shift)
         
     
