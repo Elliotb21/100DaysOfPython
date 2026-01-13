@@ -1,4 +1,4 @@
-# Caesar Cipher is an encryption mechanism that shifts the phonetic alphabet to encode and decode a particular message.
+# Caesar Cipher is an encryption mechanism that shifts the English alphabet to encode and decode a particular message.
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 cipher_running = True
@@ -10,33 +10,22 @@ def gather_information():
     return direction, text, shift
 
 def caesar_cipher(direction, text, shift):
-
-    def encrypt(text, shift): 
-        cipher_text = ""
+    
+    # Improved by merging encrypt & decrypt functions into one function called 'transform'   
+    def transform(text, shift):
+        result = ""
         for letter in text:
             if letter in alphabet:
-                shifted_index = alphabet.index(letter) + shift
-                shifted_index %= len(alphabet)
-                cipher_text += alphabet[shifted_index]
+                index = (alphabet.index(letter) + shift) % len(alphabet)
+                result += alphabet[index]
             else:
-                cipher_text += letter
-        print(f"Your encoded text is {cipher_text}.")
-                       
-    def decrypt(text, shift):
-        plain_text = ""
-        for letter in text:
-            if letter in alphabet:
-                shifted_index = alphabet.index(letter) - shift
-                shifted_index %= len(alphabet)
-                plain_text += alphabet[shifted_index]
-            else:
-                plain_text += letter
-        print(f"Your decoded text is {plain_text}.")
+                result += letter
+        return result
     
     if direction == 'encode':
-        encrypt(text, shift)
+        print("your encoded text is: ", transform(text, shift))
     elif direction == 'decode':
-        decrypt(text, shift)
+        print("your decoded text is: ", transform(text, -shift))
     else:
         print("Please type 'encode' or 'decode' to operate the cipher. ")
         
