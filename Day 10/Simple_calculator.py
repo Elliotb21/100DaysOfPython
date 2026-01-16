@@ -1,5 +1,5 @@
+import os
 import art
-print(art.logo)
 
 # This is a simple calculator with limited memory
 
@@ -26,23 +26,23 @@ math_dict = {
 # If yes, program loops to use the previous result as the first number and then repeats the calculation process.
 # If no, program asks the user for the fist number again and wipes all memory of previous calculations.
 
-def calculation(num1, num2, operator):
-    return (math_dict[operator](num1,num2))
+def calculation():
+    print(art.logo)
+    calculating = True
+    num1 = float(input("Please enter the first number: "))
     
-def continue_calculating(current_result):
-    operator = input("Please enter a mathematical operator (a choice of '+', '-', '*' or '/') ")
-    num2 = float(input("Please enter the second number: "))
-    current_result = calculation(current_result, num2, operator)
-        
-num1 = float(input("Please enter the first number: "))
-operator = input("Please enter a mathematical operator (a choice of '+', '-', '*' or '/') ")
-num2 = float(input("Please enter the second number: "))
-current_result = (math_dict[operator](num1,num2))
-
-calculating = True
-while calculating:
-    continue_flag = input("Do you want to continue operating with the previous result? (y/n): ").lower()
-    if continue_flag == "y":
-        continue_calculating(current_result)
-    else:
-        calculation(num1,num2,operator)
+    while calculating:    
+        for operator in math_dict:
+            print(operator)
+        operator = input("Please enter a mathematical operator: ")
+        num2 = float(input("Please enter the second number: "))
+        answer = (math_dict[operator](num1,num2))
+        print(f"{num1} {operator} {num2} = {answer}")
+        choice = input(f"Do you want to continue operating with {answer}? (y/n): ").lower()
+        if choice == "y":
+            num1 = answer
+        else:
+            calculating = False
+            print(os.system('cls' if os.name == "nt" else 'clear'))
+            calculation()
+calculation()
