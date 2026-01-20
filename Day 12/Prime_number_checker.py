@@ -10,7 +10,7 @@
 # Example Input 2 = 75 | Example Output 2 = False
 
 def is_prime(num):    
-    if num in (1,2,3,5,7,11,13,17,19):
+    if num in (2,3,5,7,11,13,17,19):
         return True
     if num % 2 == 0:
         return False
@@ -30,3 +30,16 @@ def is_prime(num):
 print(is_prime(73))
 print(is_prime(75))
 print(is_prime(19))
+
+# Here is AI's version
+def is_prime(num):
+    if num <= 1: # 1 or less is not a prime number including all negative numbers.
+        return False
+    # Calculates square root of the number, then adds one for inclusivity of end number since range() function.
+    # e.g. 100 is the num, for integer in range 2 - 11, because sqrt(100)=10, checks against modulo for 2 - 11. 
+    # then if condition - if 100 % 2 == 0, then False. The loop performs up until the sqrt + 1, so in the case of num=100, 11.
+    for i in range(2, int(num ** 0.5) + 1): 
+        if num % i == 0:
+            return False
+
+    return True

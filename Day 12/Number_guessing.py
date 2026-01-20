@@ -1,5 +1,4 @@
 import random
-import os
 
 # This program has the user guess a number between 1 and 100. 
 # Easy mode gives 5 guesses and hard mode gives 10 guesses.
