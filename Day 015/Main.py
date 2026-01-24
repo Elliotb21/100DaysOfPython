@@ -6,7 +6,7 @@ import coffee_functions
 #coffee_functions.report()
 machine_on = True
 while machine_on:
-    user_input = input("Would you like to view 'resources', 'order' a drink, or turn the machine 'off'? ").lower()
+    user_input = input("Would you like to view 'resources', 'order' a drink, or turn the machine 'off'?\n").lower()
     if user_input == "off":
         machine_on = False
     elif user_input == "resources":

@@ -16,7 +16,7 @@ def make_drink(drink_name, resources):
             print(f"Sorry, not enough {ingredient}")
             return
         
-    print(f"The cost for {drink_name} is {cost:.2f}")
+    print(f"The cost for {drink_name} is ${cost:.2f}")
     payment = insert_money()
     sufficient_payment = calculate(cost, payment)
     
