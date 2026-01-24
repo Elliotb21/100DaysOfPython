@@ -3,10 +3,9 @@ import coffee_functions
 
 # Let's make a coffee machine!
 
-#coffee_functions.report()
 machine_on = True
 while machine_on:
-    user_input = input("Would you like to view 'resources', 'order' a drink, or turn the machine 'off'?\n").lower()
+    user_input = input("Would you like to view 'resources', 'order' a drink, or turn the machine 'off'? ").lower()
     if user_input == "off":
         machine_on = False
     elif user_input == "resources":
@@ -23,4 +22,4 @@ while machine_on:
             should_continue = input("Would you like to order again? ('y' or 'n'): ")
             if should_continue == "n":
                 ordering = False
-  
+                
