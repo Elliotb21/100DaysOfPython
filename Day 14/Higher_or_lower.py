@@ -2,6 +2,7 @@
 from random import randint
 from Game_Data import DATA
 import art
+import os
 
 game_over = False
 high_score = 0
@@ -27,6 +28,8 @@ while not game_over:
     a_count = dict_1["follower_count"]
     b_count = dict_2["follower_count"]
     user_choice = input("Who has more followers? Type 'A' or 'B': ").lower()
+    print(art.logo)
+    os.system('cls' if os.name == "nt" else 'clear')
     if user_choice == 'a':
         user_choice = a_count
         comparison_count = b_count
