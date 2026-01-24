@@ -6,61 +6,26 @@ def report(resources):
     """Shows the current resource values."""
     print(f"Water = {resources['water']} \nMilk = {resources['milk']} \nCoffee = {resources['coffee']} \nMoney = ${resources['money']:.2f}") 
     
-def espresso(resources):
-    """Checks resources needed for the given drink. Queries for payment. Checks payment value. Returns drink."""
-    drink = MENU["espresso"]["ingredients"]
-    cost = MENU["espresso"]["cost"]
-    for ingredient in drink:
-        if resources[ingredient] < drink[ingredient]:
-            print(f"Sorry, not enough {ingredient}")
-            return
     
-    print(f"The cost for an espresso is: ${cost}")
-    payment = insert_money()
-    sufficient_payment = calculate(cost, payment)    
-     
-    if sufficient_payment:
-        for ingredient in drink:
-            resources[ingredient] -= drink[ingredient]
-        print("Here is your espresso! ☕")
-
-def latte(resources):
-    """Checks resources needed for the given drink. Queries for payment. Checks payment value. Returns drink."""
-    drink = MENU["latte"]["ingredients"]
-    cost = MENU["latte"]["cost"]
-    for ingredient in drink:
-        if resources[ingredient] < drink[ingredient]:
-            print(f"Sorry, not enough {ingredient}")
-            return
-       
-    print(f"The cost for a latte is: ${cost}")
-    payment = insert_money()
-    sufficient_payment = calculate(cost, payment) 
-        
-    if sufficient_payment:
-        for ingredient in drink:
-            resources[ingredient] -= drink[ingredient]
-        print("Here is your latte! ☕")
-
+def make_drink(drink_name, resources):
+    drink = MENU[drink_name]["ingredients"]
+    cost = Decimal(str(MENU[drink_name]["cost"]))
     
-def cappuccino(resources):
-    """Checks resources needed for the given drink. Queries for payment. Checks payment value. Returns drink."""
-    drink = MENU["cappuccino"]["ingredients"]
-    cost = MENU["cappuccino"]["cost"]
     for ingredient in drink:
         if resources[ingredient] < drink[ingredient]:
             print(f"Sorry, not enough {ingredient}")
             return
         
-    print(f"The cost for a cappuccino is: ${cost}")
+    print(f"The cost for {drink_name} is {cost:.2f}")
     payment = insert_money()
     sufficient_payment = calculate(cost, payment)
     
     if sufficient_payment:
         for ingredient in drink:
             resources[ingredient] -= drink[ingredient]
-        print("Here is your cappuccino! ☕")
-    
+        print(f"Here is your {drink_name}! ☕")
+ 
+ 
 def insert_money():
     """Queries for coin payment. Returns payment as a decimal total."""
     payment = int(input("Please insert quarters: ")) * Decimal("0.25")
@@ -68,6 +33,7 @@ def insert_money():
     payment += int(input("Please insert nickels: ")) * Decimal("0.05")
     payment += int(input("Please insert pennies: ")) * Decimal("0.01")
     return payment
+
                      
 def calculate(drink_cost, payment_total):
     """Compares payment entered from insert_money to drink cost and returns Boolean."""

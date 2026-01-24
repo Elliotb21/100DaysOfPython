@@ -7,25 +7,20 @@ import coffee_functions
 machine_on = True
 while machine_on:
     user_input = input("Would you like to view 'resources', 'order' a drink, or turn the machine 'off'? ").lower()
-    if user_input == "resources":
-        coffee_functions.report(resources)
-    elif user_input == "off":
+    if user_input == "off":
         machine_on = False
+    elif user_input == "resources":
+        coffee_functions.report(resources)
     elif user_input == "order":
         ordering = True
-        while ordering:        
+        while ordering:    
             user_selection = input("What would you like? (espresso/latte/cappuccino): " ).lower()
-
-            if user_selection == "espresso":
-                coffee_functions.espresso(resources)
-            elif user_selection == "latte":
-                coffee_functions.latte(resources)
-            elif user_selection == "cappuccino":
-                coffee_functions.cappuccino(resources)
+            if user_selection in MENU:
+                coffee_functions.make_drink(drink_name = user_selection, resources = resources)
             else:
-                print("Umm, not sure how to make that... Please try again. ")
+                print("Umm, not sure how to make that... Please try again.")
+
             should_continue = input("Would you like to order again? ('y' or 'n'): ")
             if should_continue == "n":
                 ordering = False
-    
-    
+  
