@@ -6,17 +6,21 @@ import art
 game_over = False
 high_score = 0
 
-def compare(follower_count_of_chosen, selected_item):
-    if follower_count_of_chosen > selected_item:
+def compare(choice, count_to_compare):
+    if choice > count_to_compare:
         print("You got it!")
         return high_score + 1, False
     else:
         print("Oh no! You guessed wrong. Clearly you know nothing.")
         return high_score, True
-   
+print(art.logo)
+dict_2 = DATA[randint(0, len(DATA)-1)]
+
 while not game_over:     
-    dict_1 = DATA[randint(0, len(DATA)-1)]
+    dict_1 = dict_2
     dict_2 = DATA[randint(0, len(DATA)-1)]
+    if dict_1 == dict_2:
+        dict_2 = DATA[randint(p, len(DATA)-1)]
     print(f"Compare A:  {dict_1["name"]}, a(n) {dict_1["description"]}, from {dict_1["country"]}.")
     print(art.vs)
     print(f"With B:  {dict_2["name"]}, a(n) {dict_2["description"]}, from {dict_2["country"]}.")
@@ -26,13 +30,11 @@ while not game_over:
     if user_choice == 'a':
         user_choice = a_count
         comparison_count = b_count
-    elif user_choice == 'b':
+    else:
         user_choice = b_count
         comparison_count = a_count
-    else:
-        print("That wasn't a valid choice. Let's try that again... ")
     high_score, game_over = compare(user_choice, comparison_count)
-    print(f"Your current score is: {high_score}")
+    print(f"Your high score is: {high_score}")
 
 
         
