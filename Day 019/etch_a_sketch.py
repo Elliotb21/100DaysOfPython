@@ -24,8 +24,6 @@ def clear():
     turk.pendown()
 
 screen.listen()
-
-
 screen.onkey(fun=move_forward, key="w")
 screen.onkey(fun=turn_right, key="d")
 screen.onkey(fun=turn_left, key="a")
