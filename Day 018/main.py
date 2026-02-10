@@ -17,7 +17,8 @@ import random
 
 # Initialize turtle object, screen object, and position turtle to start the drawing.
 t = Turtle()
-t.speed("fast")
+t.speed("fastest")
+t.hideturtle()
 t.pensize(20)
 t.penup()
 t.setposition(-250,-250)
