@@ -20,4 +20,3 @@ class Snake:
             new_y = self.snake_body[segment -1].ycor()
             self.snake_body[segment].goto(new_x, new_y)
         self.snake_body[0].forward(self.MOVE_DISTANCE)    
-        self.snake_body[0].left(90)
