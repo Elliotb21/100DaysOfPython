@@ -2,6 +2,7 @@ from turtle import Screen
 import time
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 
 # Modifies the speed of screen updates
 DIFFICULTY = {
@@ -18,6 +19,7 @@ screen.title("Snake!")
 screen.tracer(0)
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 # Queries user for difficulty. Main game section
 difficulty_prompt = screen.textinput(
@@ -45,6 +47,7 @@ while not game_over:
     # Detect collision with food
     if snake.snake_head.distance(food) < 15:
         food.refresh()
+        scoreboard.update_score()
     
   
 
