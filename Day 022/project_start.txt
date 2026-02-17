@@ -1,0 +1,19 @@
+Possible classes.
+    Player 1 paddle, scoreboard
+    Player 2 paddle, scoreboard
+    Dashed dividing line    
+    Pong ball
+Additional objects needed
+    Screen - black background
+    
+Tasks:
+    1. Create the Screen
+    2. Create Player 1 paddle
+    3. Create Player 2 paddle
+    4. Create the pong ball and make it move
+    5. Behavior for pong ball
+        collision with wall
+        collision with paddle
+    6. Detect when paddle misses
+    7. Create Player 1 scoreboard
+    8. Create Player 2 scoreboard
