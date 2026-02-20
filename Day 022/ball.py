@@ -13,18 +13,29 @@ class Ball(Turtle):
         super().__init__()
         self.penup()
         self.color("white")
-        self.shape("circle")        
+        self.shape("circle")
+        self.ball_speed = 0.03       
 
-        self.dx = 5
-        self.dy = 5
+        self.x = 5
+        self.y = 5
         
     def move_ball(self):
-        new_x = self.xcor() + self.dx
-        new_y = self.ycor() + self.dy
+        new_x = self.xcor() + self.x
+        new_y = self.ycor() + self.y
         self.goto(new_x, new_y)
             
             
     def bounce_y(self):
-        self.dy *= -1
+        self.y *= -1
+        
+    def bounce_x(self):
+        self.x *= -1
+        self.ball_speed *= 0.75
+        
+    
+    def reset_ball(self):
+        self.goto(0,0)
+        self.ball_speed = 0.03
+        self.bounce_x()
         
             
