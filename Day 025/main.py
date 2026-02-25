@@ -10,5 +10,18 @@ import pandas
     # print(temperatures)
     
 data = pandas.read_csv("./weather_data.csv")
-print(data)
-print(data["temp"])
+# print(data)
+# print(data["temp"])
+# data_dict = data.to_dict()
+# print(data_dict)
+
+# print(data["temp"].mean())
+# data_list = data["temp"].tolist()
+# average = sum(data_list) / len(data_list)
+# print(average)
+
+# print(data["temp"].max())
+# #object attribute
+# print(data.condition)
+# #more like a dictionary.
+# print(data["condition"])
