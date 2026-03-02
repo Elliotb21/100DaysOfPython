@@ -18,6 +18,7 @@ t.hideturtle()
 states_csv = pandas.read_csv("50_states.csv")
 total_guesses = 50
 correct_guesses = []
+all_states = states_csv.state.to_list()
 
 
 while total_guesses > 1:
@@ -26,6 +27,12 @@ while total_guesses > 1:
     total_guesses -= 1
     # Exit game if user cancels
     if guess_state == "Exit":
+        missing_states = []
+        for state in all_states:
+            if state not in correct_guesses:
+                missing_states.append(state)
+        data_to_learn = pandas.DataFrame(missing_states)
+        data_to_learn.to_csv("./states_to_learn.csv")
         break  
     # Ignore repeated guesses
     if guess_state in correct_guesses:
@@ -38,4 +45,3 @@ while total_guesses > 1:
         t.goto(x, y)
         t.write(arg=guess_state, font=("Arial", 10, "normal"), align="center")
         correct_guesses.append(guess_state)
-screen.exitonclick()
