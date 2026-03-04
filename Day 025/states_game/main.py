@@ -27,10 +27,12 @@ while total_guesses > 1:
     total_guesses -= 1
     # Exit game if user cancels
     if guess_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in correct_guesses:
-                missing_states.append(state)
+        # Getting rid of all of this for one line!
+        missing_states = [state for state in all_states if state not in correct_guesses]
+        # missing_states = []
+        # for state in all_states:
+            # if state not in correct_guesses:
+                # missing_states.append(state)
         data_to_learn = pandas.DataFrame(missing_states)
         data_to_learn.to_csv("./states_to_learn.csv")
         break  
