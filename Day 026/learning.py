@@ -35,3 +35,21 @@
 
 # result = list(file1_set & file2_set)
 # print(result)
+
+import pandas
+student_dict = {
+    "student":["Angela", "James", "Lilly"],
+    "score": [56, 76, 98]  
+}
+# for (key,value) in student_dict.items():
+    # print(key, value)
+    
+student_df = pandas.DataFrame(student_dict)
+print(student_df)
+# for key, value in student_df.items():
+    # print(value)
+for index, row in student_df.iterrows():
+    # print(row)
+    # print(row.student)
+    if row.student == "Lilly":
+        print(row.score)
