@@ -25,6 +25,9 @@ class Car():
     def __init__(self, **kwargs):
         self.make = kwargs["make"]
         self.model = kwargs["model"]
+        self.color = kwargs.get("color") #The benefit of get is that it will return none so it won't crash 
+                                         #if no value is passed
         
 my_car = Car(make="Honda", model="Civic")
 print(my_car.make)
+print(my_car.color)
