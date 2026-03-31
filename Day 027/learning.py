@@ -31,3 +31,8 @@ class Car():
 my_car = Car(make="Honda", model="Civic")
 print(my_car.make)
 print(my_car.color)
+
+import tkinter
+
+window = tkinter.Tk()
+window.mainloop()
